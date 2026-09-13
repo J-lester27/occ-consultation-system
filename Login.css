@@ -84,8 +84,8 @@ section {
   text-align: center;
   color: white;
   position: relative;
-  padding: 120px 20px 40px; /* Dinagdagan sa taas para hindi matakpan ng header sa mobile */
-}
+  padding: 120px 20px 40px;
+
 
 section::before {
   content: "";
