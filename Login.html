@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - One Cainta College</title>
+  <link rel="shortcuticon" href="Logo.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #eef3ff;
+      color: #1e1e2f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    header {
+      background: transparent;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 50;
+      gap: 8px;
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    header img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(0.85rem, 3vw, 1.2rem);
+      letter-spacing: 0.05em;
+      font-weight: 800;
+      text-align: left;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .header-buttons {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    section {
+      min-height: 100vh;
+      width: 100%;
+      margin: 0;
+      background-image: url("/Image/OCC-BG.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      position: relative;
+      padding: 100px 16px 30px;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(1, 12, 38, 0.75);
+    }
+    .form-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 700px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: rgba(0, 13, 153, 0.85);
+      padding: clamp(25px, 4vw, 40px);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      text-align: left;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .close-btn {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: color 0.3s ease, background 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      z-index: 10;
+    }
+    .close-btn svg {
+      width: 20px;
+      height: 20px;
+    }
+    .close-btn:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .form-header {
+      margin-bottom: 20px;
+      text-align: center;
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+    .form-container h2 {
+      margin: 0 0 6px;
+      font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+      text-align: center;
+      color: white;
+      font-weight: 900;
+    }
+    .form-container p {
+      margin: 0 0 20px;
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      text-align: center;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .reg-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .input-group label {
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      font-weight: 700;
+      color: white;
+    }
+    .input-group input,
+    .input-group select {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      outline: none;
+    }
+    .input-group select option {
+      background: #031170;
+      color: white;
+      font-size: 1rem;
+    }
+    .submit-btn {
+      margin-top: 10px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background-color: #515FFF;
+      color: white;
+      font-weight: 700;
+      font-size: clamp(1rem, 1.8vw, 1.2rem);
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover {
+      background-color: blue;
+    }
+    .hero-button {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      background-color: #515FFFA8;
+      transition: background-color 0.3s ease;
+    }
+    .hero-button:hover {
+      background-color: #515FFF;
+    }
+    #email::placeholder, 
+    #password::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .alert {
+      padding: 12px;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      text-align: center;
+      color: white;
+      font-size: 1rem;
+      display: none;
+    }
+
+    /* Mobile Breakpoints */
+    @media screen and (max-width: 600px) {
+      header {
+        padding: 12px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo-title">
+    <img id="Logo" src="/Image/Logo.png" alt="One Cainta College logo">
+    <h1 id="OCC">OCC - LOGIN</h1>
+  </div>
+  <div class="header-buttons">
+    <a class="hero-button" href="/register.html" target="_self">REGISTER</a>
+    <a class="hero-button" href="/login.html" target="_self">LOG IN</a>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="form-container">
+      <a href="Intro.html" class="close-btn" target="_self" title="Back to Intro">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </a>
+
+      <div class="form-header">
+        <h2>Welcome Back</h2>
+        <p>Select your role and sign in to your account.</p>
+      </div>
+      
+      <div id="alert-box" class="alert"></div>
+
+      <form id="loginForm" class="reg-form">
+        <div class="input-group">
+          <label for="role">Select Role</label>
+          <select id="role" name="role" required>
+            <option value="" disabled selected>-- Choose your role --</option>
+            <option value="student">Student</option>
+            <option value="professor">Professor</option>
+            <option value="administration">Administration</option>
+          </select>
+        </div>
+
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
+
+        <button type="submit" class="submit-btn">LOG IN</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script>
+  const alertBox = document.getElementById('alert-box');
+
+  function showAlert(message, isError = false) {
+    alertBox.textContent = message;
+    alertBox.style.display = 'block';
+    alertBox.style.background = isError ? '#d9534f' : '#2d9c5d';
+    alertBox.style.border = '1px solid rgba(255,255,255,0.2)';
+  }
+
+  document.getElementById('loginForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const role = document.getElementById('role').value;
+    const email = document.getElementById('email').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (!role) {
+      showAlert('Please select a valid role.', true);
+      return;
+    }
+
+    try {
+      const response = await fetch('api/login.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ role, email, password })
+      });
+
+      const result = await response.json();
+
+      if (!result.success) {
+        showAlert(result.message || 'Login failed.', true);
+        return;
+      }
+
+      localStorage.setItem('occ_current_user', JSON.stringify(result.user));
+      showAlert('Login successful! Redirecting...');
+
+      setTimeout(() => {
+        if (role === 'student') {
+          window.location.href = 'Student-home.html';
+        } else if (role === 'professor') {
+          window.location.href = 'Professor-home.html';
+        } else if (role === 'administration') {
+          window.location.href = 'Admin-home.html';
+        }
+      }, 500);
+    } catch (error) {
+      showAlert('Unable to connect to the server. Please check your PHP/MySQL setup.', true);
+    }
+  });
+</script>
+</body>
+</html>

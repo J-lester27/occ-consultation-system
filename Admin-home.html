@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - One Cainta College</title>
+  <link rel="shortcuticon" href="Logo.png" type="image/x-icon">
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: #eef3ff;
+      color: #1e1e2f;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    header {
+      background: transparent;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 50;
+      gap: 8px;
+    }
+    .logo-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    header img {
+      width: 45px;
+      height: 45px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(0.8rem, 2.8vw, 1.2rem);
+      letter-spacing: 0.05em;
+      font-weight: 800;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .header-buttons {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    section {
+      min-height: 100vh;
+      width: 100%;
+      margin: 0;
+      background-image: url("/Image/OCC-BG.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      padding: 100px 16px 30px;
+    }
+    section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(1, 12, 38, 0.75);
+    }
+    .dashboard-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: rgba(0, 13, 153, 0.85);
+      padding: clamp(25px, 4vw, 40px);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .dashboard-container h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+    }
+    .dashboard-container p {
+      margin: 0 0 24px;
+      font-size: clamp(1rem, 2vw, 1.5rem);
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    /* Analytics Stats Bar */
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-box {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 18px;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .stat-box h4 {
+      margin: 0 0 5px;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      color: rgba(255, 255, 255, 0.9);
+    }
+    .stat-box .count {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: clamp(18px, 2.5vw, 25px);
+      border-radius: 14px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      font-weight: 700;
+    }
+    .card p {
+      font-size: clamp(0.95rem, 1.6vw, 1.2rem);
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .card-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background-color: #515FFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+    .card-btn:hover {
+      background-color: blue;
+    }
+    .hero-button {
+      display: inline-block;
+      padding: 6px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 12px;
+      background-color: #515FFFA8;
+      transition: background-color 0.3s ease;
+    }
+    .hero-button:hover {
+      background-color: #515FFF;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo-title">
+    <img src="/Image/Logo.png" alt="One Cainta College logo">
+    <h1>OCC - ADMIN</h1>
+  </div>
+  <div class="header-buttons">
+    <a class="hero-button" href="/Login.html">LOG OUT</a>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="dashboard-container">
+      <h2>Welcome, Administrator!</h2>
+      <p>Overview of system users and database analytics.</p>
+      
+      <div class="stats-container">
+        <div class="stat-box">
+          <h4>Total Students</h4>
+          <p class="count" id="studentCount">1,245</p>
+        </div>
+        <div class="stat-box">
+          <h4>Total Professors</h4>
+          <p class="count" id="profCount">84</p>
+        </div>
+        <div class="stat-box">
+          <h4>Administrators</h4>
+          <p class="count" id="adminCount">6</p>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <div class="card">
+          <div>
+            <h3>Manage Accounts</h3>
+            <p>Handle student and professor profile registrations and credentials.</p>
+          </div>
+          <a href="#" class="card-btn">Manage Users</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>System Records & Appointments</h3>
+            <p>View all appointments, search records, and sort data.</p>
+          </div>
+          <a href="#" class="card-btn">View Records</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>Generate Reports</h3>
+            <p>Create summary reports regarding consultations and usage.</p>
+          </div>
+          <a href="#" class="card-btn">Create Report</a>
+        </div>
+        <div class="card">
+          <div>
+            <h3>System Monitor</h3>
+            <p>Track and monitor overall system activities and logs.</p>
+          </div>
+          <a href="#" class="card-btn">View Activity</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const currentUser = JSON.parse(localStorage.getItem('occ_current_user') || 'null');
+
+  async function loadAdminStats() {
+    try {
+      const response = await fetch('api/stats.php');
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById('studentCount').textContent = result.counts.student || 0;
+        document.getElementById('profCount').textContent = result.counts.professor || 0;
+        document.getElementById('adminCount').textContent = result.counts.administration || 0;
+      }
+    } catch (error) {
+      document.getElementById('studentCount').textContent = '0';
+      document.getElementById('profCount').textContent = '0';
+      document.getElementById('adminCount').textContent = '0';
+    }
+  }
+
+  const welcome = document.querySelector('.dashboard-container h2');
+  if (welcome) {
+    const name = currentUser && currentUser.fullName ? currentUser.fullName : 'Administrator';
+    welcome.textContent = 'Welcome, ' + name + '!';
+  }
+
+  loadAdminStats();
+</script>
+</body>
+</html>
