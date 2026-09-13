@@ -1,4 +1,4 @@
-Body {
+body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
   background: #eef3ff;
@@ -85,7 +85,7 @@ section {
   color: white;
   position: relative;
   padding: 120px 20px 40px;
-
+}
 
 section::before {
   content: "";
@@ -104,7 +104,7 @@ section::before {
 
 .hero-content h2 {
   margin: 0;
-  font-size: clamp(2.5rem, 6vw, 5.2rem); /* Dynamic sizing para hindi pumutol sa cellphone */
+  font-size: clamp(2.5rem, 6vw, 5.2rem);
   line-height: 1.05;
   letter-spacing: 0.03em;
   animation: opac 0.8s linear forwards;
@@ -113,7 +113,7 @@ section::before {
 
 .hero-content p {
   margin: 20px auto 0;
-  font-size: clamp(1.1rem, 2.2vw, 2.2rem); /* Babag bagay sa mobile at desktop */
+  font-size: clamp(1.1rem, 2.2vw, 2.2rem);
   max-width: 640px;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.88);
